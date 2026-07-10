@@ -68,7 +68,7 @@
             box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
         }
 
-        /* Окно авторизации (остается аккуратным по центру) */
+        /* Окно авторизации */
         .auth-box {
             max-width: 420px;
             margin: 40px auto;
@@ -127,7 +127,7 @@
             text-decoration: underline;
         }
 
-        /* --- НОВЫЙ ПОЛНОЭКРАННЫЙ ЛИЧНЫЙ КАБИНЕТ --- */
+        /* --- ПОЛНОЭКРАННЫЙ ЛИЧНЫЙ КАБИНЕТ --- */
         .full-screen-cabinet {
             max-width: 1100px;
             margin: 40px auto;
@@ -137,19 +137,19 @@
             border-radius: 16px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.7);
             display: grid;
-            grid-template-columns: 1fr 1.5fr; /* Разделение на левую и правую часть */
+            grid-template-columns: 1fr 1.5fr;
             gap: 40px;
             text-align: left;
         }
 
         @media (max-width: 768px) {
             .full-screen-cabinet {
-                grid-template-columns: 1fr; /* На мобилках в один столбец */
+                grid-template-columns: 1fr;
                 margin: 20px;
             }
         }
 
-        /* Левая сторона: Элегантная VIP Карта */
+        /* Левая сторона: VIP Карта */
         .vip-card {
             background: linear-gradient(135deg, #1e1e1e 0%, #111111 100%);
             border: 1px solid #333;
@@ -161,6 +161,12 @@
             flex-direction: column;
             justify-content: space-between;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            transition: background 0.5s ease;
+        }
+        /* Золотой стиль для карты VIP */
+        .vip-card.premium-status {
+            background: linear-gradient(135deg, #2a220c 0%, #111111 100%);
+            border-color: #d4af37;
         }
         .vip-card .card-logo {
             font-family: 'Playfair Display', serif;
@@ -176,13 +182,18 @@
             color: #ffffff;
         }
         .vip-card .card-status {
-            color: #d4af37;
+            color: #aaaaaa;
             font-size: 12px;
             letter-spacing: 3px;
             margin-top: 5px;
+            transition: color 0.3s;
+        }
+        .vip-card.premium-status .card-status {
+            color: #d4af37;
+            font-weight: bold;
         }
 
-        /* Правая сторона: Большое меню действий */
+        /* Правая сторона: Меню действий */
         .cabinet-right h2 {
             font-family: 'Playfair Display', serif;
             color: #d4af37;
@@ -214,10 +225,54 @@
             color: #d4af37;
             background: #1c1c1c;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212,175,55,0.05);
         }
 
-        /* Меню услуг (без цен) */
+        /* --- СТИЛИ ДЛЯ ПАНЕЛИ АДМИНИСТРАТОРА --- */
+        .admin-panel {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background: #151515;
+            border: 1px solid #d4af37;
+            border-radius: 16px;
+            text-align: left;
+            box-shadow: 0 20px 50px rgba(212,175,55,0.1);
+        }
+        .admin-panel h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            margin-top: 0;
+        }
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .user-table th, .user-table td {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+            text-align: left;
+        }
+        .user-table th {
+            color: #d4af37;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .btn-status {
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .btn-status.make-vip {
+            border-color: #d4af37;
+            color: #d4af37;
+        }
+
+        /* Меню услуг */
         .services-section {
             margin-top: 80px;
             text-align: left;
@@ -255,7 +310,6 @@
             font-size: 12px;
             color: #444;
             letter-spacing: 1px;
-            border-top: 1px solid #111;
         }
     </style>
 </head>
@@ -267,13 +321,13 @@
         <div class="nav-links">
             <a href="#">ГЛАВНАЯ</a>
             <a href="#">УСЛУГИ</a>
-            <a href="https://www.instagram.com/blessedbeautybar__/" target="_blank">INSTAGRAM</a>
+            <a href="https://instagram.com/blessedbeautybar__" target="_blank">INSTAGRAM</a>
             <a href="#">КОНТАКТЫ</a>
         </div>
-        <a href="https://www.instagram.com/blessedbeautybar__/" target="_blank" class="btn-insta">INSTAGRAM</a>
+        <a href="https://instagram.com/blessedbeautybar__" target="_blank" class="btn-insta">INSTAGRAM</a>
     </div>
 
-    <!-- ОКНО АВТОРИЗАЦИИ (Остается по центру) -->
+    <!-- ОКНО АВТОРИЗАЦИИ -->
     <div id="auth-container" class="auth-box">
         <h3 id="auth-title">Создать аккаунт</h3>
         <form id="real-auth-form">
@@ -286,33 +340,52 @@
         <div id="auth-toggle-text" class="toggle-text" onclick="toggleAuthMode()">Уже есть аккаунт? Войти</div>
     </div>
 
-    <!-- ПОЛНОЭКРАННЫЙ КЛУБНЫЙ КАБИНЕТ -->
+    <!-- ПОЛНОЭКРАННЫЙ КЛУБНЫЙ КАБИНЕТ КЛИЕНТА -->
     <div id="welcome-container" class="full-screen-cabinet" style="display: none;">
-        <!-- Левая часть: Презентабельная VIP Карта -->
         <div>
-            <div class="vip-card">
+            <div id="user-vip-card" class="vip-card">
                 <div class="card-logo">BLESSED</div>
                 <div>
                     <div class="card-holder" id="user-card-name">ЗАГРУЗКА...</div>
-                    <div class="card-status">BLESSED CLUB • PREMIUM MEMBER</div>
+                    <div class="card-status" id="user-card-status">BLESSED CLUB • MEMBER</div>
                 </div>
             </div>
             <button onclick="logout()" class="btn-premium" style="background: #cc3333; color: #fff; box-shadow: none; width: 100%; margin-top: 20px;">Выйти из аккаунта</button>
         </div>
         
-        <!-- Правая часть: Меню и кнопки -->
         <div class="cabinet-right">
             <h2>Личный кабинет BLESSED</h2>
             <div class="cabinet-grid">
-                <button class="cabinet-btn" onclick="alert('У вас активирована привилегия закрытого клуба: скидка 10% на первый визит!')">🎁 Мои Привилегии</button>
+                <button class="cabinet-btn" onclick="alert('У вас активирована привилегия клуба: скидка 10% на визит!')">🎁 Мои Привилегии</button>
                 <button class="cabinet-btn" onclick="alert('Ближайших визитов не запланировано.')">📅 Предстоящие визиты</button>
-                <button class="cabinet-btn" onclick="window.open('https://www.instagram.com/blessedbeautybar__/', '_blank')">✍ Быстрая Запись в Direct</button>
-                <button class="cabinet-btn" onclick="alert('Ваша клубная карта активна и верифицирована.')">💳 Статус карты</button>
+                <button class="cabinet-btn" onclick="window.open('https://instagram.com/blessedbeautybar__', '_blank')">✍ Быстрая Запись в Direct</button>
+                <button class="cabinet-btn" onclick="alert('Ваша клубная карта активна.')">💳 Статус карты</button>
             </div>
         </div>
     </div>
 
-    <!-- Меню услуг (ЦЕНЫ УБРАНЫ) -->
+    <!-- СКРЫТАЯ ПАНЕЛЬ АДМИНИСТРАТОРА -->
+    <div id="admin-container" class="admin-panel" style="display: none;">
+        <h2>Панель управления администратора BLESSED</h2>
+        <p>Здесь вы можете управлять статусами клиентов салона.</p>
+        
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>Логин Клиента</th>
+                    <th>Текущий статус</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody id="admin-users-list">
+                <!-- Сюда скриптом будут добавляться пользователи -->
+            </tbody>
+        </table>
+        
+        <button onclick="logout()" class="btn-premium" style="background: #cc3333; color: #fff; box-shadow: none; margin-top: 30px;">Выйти из панели</button>
+    </div>
+
+    <!-- Меню услуг -->
     <div class="services-section">
         <h2>Наше Меню Услуг</h2>
         
@@ -336,15 +409,30 @@
         © 2026 BLESSED BEAUTY BAR. ВСЕ ПРАВА ЗАЩИЩЕНЫ.
     </footer>
 
-    <!-- Логика сессий и авторизации -->
+    <!-- Логика администратора и распределения статусов -->
     <script>
         let isLoginMode = false;
         const authForm = document.getElementById('real-auth-form');
 
+        // Список всех пользователей (хранится в памяти для админки)
+        function getAllRegisteredUsers() {
+            const users = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('u_secure_')) {
+                    const username = key.replace('u_secure_', '');
+                    // Получаем статус пользователя (по умолчанию 'MEMBER')
+                    const status = localStorage.getItem(`status_${username}`) || 'MEMBER';
+                    users.push({ username, status });
+                }
+            }
+            return users;
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             const activeUser = sessionStorage.getItem('active_session_user');
             if (activeUser) {
-                showDashboard(activeUser);
+                showCorrectDashboard(activeUser);
             }
         });
 
@@ -372,35 +460,106 @@
 
             if (!login || !pass) return;
 
+            // ХАРДКОД ДЛЯ ВХОДА АДМИНИСТРАТОРА
+            if (isLoginMode && login === 'admin' && pass === 'blessed2026') {
+                sessionStorage.setItem('active_session_user', 'admin');
+                showCorrectDashboard('admin');
+                return;
+            }
+
             if (!isLoginMode) {
+                // РЕГИСТРАЦИЯ КЛИЕНТА
+                if (login === 'admin') {
+                    alert('Этот логин зарезервирован системой!');
+                    return;
+                }
                 if (localStorage.getItem(`u_secure_${login}`)) {
                     alert('Ошибка: Пользователь с таким логином уже существует!');
                     return;
                 }
                 localStorage.setItem(`u_secure_${login}`, pass);
+                localStorage.setItem(`status_${login}`, 'MEMBER'); // По умолчанию статус обычный
                 sessionStorage.setItem('active_session_user', login);
-                showDashboard(login);
+                showCorrectDashboard(login);
             } else {
+                // ВХОД КЛИЕНТА
                 const savedPassword = localStorage.getItem(`u_secure_${login}`);
                 if (savedPassword && savedPassword === pass) {
                     sessionStorage.setItem('active_session_user', login);
-                    showDashboard(login);
+                    showCorrectDashboard(login);
                 } else {
                     alert('Ошибка безопасности: Неверный логин или пароль!');
                 }
             }
         });
 
-        function showDashboard(username) {
+        function showCorrectDashboard(username) {
             document.getElementById('auth-container').style.display = 'none';
-            const welcomeBox = document.getElementById('welcome-container');
-            welcomeBox.style.display = 'grid'; // Включаем сетку для полноэкранного вида
-            document.getElementById('user-card-name').innerText = username;
+            
+            if (username === 'admin') {
+                // Показываем панель админа
+                document.getElementById('welcome-container').style.display = 'none';
+                document.getElementById('admin-container').style.display = 'block';
+                renderAdminUsersList();
+            } else {
+                // Показываем панель клиента
+                document.getElementById('admin-container').style.display = 'none';
+                document.getElementById('welcome-container').style.display = 'grid';
+                
+                document.getElementById('user-card-name').innerText = username;
+                
+                // Проверяем текущий статус из базы данных
+                const currentStatus = localStorage.getItem(`status_${username}`) || 'MEMBER';
+                const cardElement = document.getElementById('user-vip-card');
+                const statusText = document.getElementById('user-card-status');
+
+                if (currentStatus === 'VIP') {
+                    cardElement.classList.add('premium-status');
+                    statusText.innerText = 'BLESSED CLUB • PREMIUM VIP';
+                } else {
+                    cardElement.classList.remove('premium-status');
+                    statusText.innerText = 'BLESSED CLUB • MEMBER';
+                }
+            }
+        }
+
+        // Отрендерить таблицу пользователей для админа
+        function renderAdminUsersList() {
+            const listContainer = document.getElementById('admin-users-list');
+            listContainer.innerHTML = '';
+            const users = getAllRegisteredUsers();
+
+            if (users.length === 0) {
+                listContainer.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#666;">Зарегистрированных клиентов пока нет</td></tr>';
+                return;
+            }
+
+            users.forEach(user => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="text-transform: uppercase; font-weight: bold;">${user.username}</td>
+                    <td style="color: ${user.status === 'VIP' ? '#d4af37' : '#aaa'}">${user.status}</td>
+                    <td>
+                        ${user.status === 'MEMBER' 
+                            ? `<button class="btn-status make-vip" onclick="toggleUserStatus('${user.username}', 'VIP')">Сделать VIP</button>` 
+                            : `<button class="btn-status" onclick="toggleUserStatus('${user.username}', 'MEMBER')">Сбросить до Member</button>`
+                        }
+                    </td>
+                `;
+                listContainer.appendChild(tr);
+            });
+        }
+
+        // Переключение статуса админом
+        window.toggleUserStatus = function(username, newStatus) {
+            localStorage.setItem(`status_${username}`, newStatus);
+            renderAdminUsersList();
         }
 
         function logout() {
             sessionStorage.removeItem('active_session_user');
             document.getElementById('welcome-container').style.display = 'none';
+            document.getElementById('admin-container').style.display = 'none';
             document.getElementById('auth-container').style.display = 'block';
             document.getElementById('auth-login').value = '';
             document.getElementById('auth-password').value = '';
