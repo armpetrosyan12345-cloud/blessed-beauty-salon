@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLESSED | Premium Beauty Bar</title>
+    <!-- Подключаем изящный премиальный шрифт для логотипа -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        /* Базовые стили */
+        body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .header {
+            padding: 40px 0;
+        }
+        
+        /* Тот самый красивый шрифт для надписи сверху */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 300;
+            letter-spacing: 7px;
+            color: #d4af37;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Красивое меню навигации */
+        .nav-links {
+            margin-bottom: 25px;
+        }
+        .nav-links a {
+            color: #aaaaaa;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            display: inline-block;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #d4af37;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Кнопка Инстаграм (теперь в виде ссылки) */
+        .btn-insta {
+            background: linear-gradient(135deg, #d4af37, #aa7c11);
+            color: #000;
+            padding: 12px 35px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-insta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Карточки ЛК и авторизации */
+        .auth-box {
+            max-width: 420px;
+            margin: 40px auto;
+            padding: 35px;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.08);
+            transition: box-shadow 0.3s ease;
+        }
+        .auth-box:hover {
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.15);
+        }
+        .auth-box h3 { 
+            color: #d4af37; 
+            margin-top: 0; 
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+        
+        .auth-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #fff;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+        .auth-box input:focus {
+            border-color: #d4af37;
+            outline: none;
+        }
+
+        .btn-premium {
+            width: 100%;
+            padding: 12px;
+            background: #d4af37;
+            border: none;
+            border-radius: 4px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.1s ease, background 0.2s ease;
+        }
+        .btn-premium:hover { background: #f1c40f; }
+        .btn-premium:active { transform: translateY(1px); }
+
+        .toggle-text {
+            font-size: 12px;
+            color: #777;
+            margin-top: 15px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* Меню внутри личного кабинета */
+        .cabinet-menu {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .menu-item-btn {
+            background: #161616;
+            border: 1px solid #2a2a2a;
+            color: #ccc;
+            padding: 15px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+        .menu-item-btn:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+            background: #1f1f1f;
+        }
+        .user-info-card {
+            background: #161616;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            border-left: 3px solid #d4af37;
+            text-align: left;
+        }
+
+        /* Меню услуг */
+        .services-section {
+            margin-top: 60px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .services-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        .service-item {
+            border-bottom: 1px solid #222;
+            padding: 20px 0;
+        }
+        .price {
+            color: #d4af37;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 60px;
+            font-size: 12px;
+            color: #444;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <div class="header">
+        <div class="logo">BLESSED</div>
+        <div class="nav-links">
+            <a href="#">ГЛАВНАЯ</a>
+            <a href="#">УСЛУГИ</a>
+            <a href="https://www.instagram.com/blessedbeautybar__/" target="_blank">INSTAGRAM</a>
+            <a href="#">КОНТАКТЫ</a>
+        </div>
+        <!-- Рабочая ссылка на Инстаграм в виде кнопки -->
+        <a href="https://www.instagram.com/blessedbeautybar__/" target="_blank" class="btn-insta">INSTAGRAM</a>
+    </div>
+
+    <!-- Блок авторизации -->
+    <div id="auth-container" class="auth-box">
+        <h3 id="auth-title">Создать аккаунт</h3>
+        <form id="real-auth-form">
+            <input type="text" id="auth-login" placeholder="Логин" required>
+            <input type="password" id="auth-password" placeholder="Пароль" required>
+            <button type="submit" id="auth-action-button" class="btn-premium">Зарегистрироваться</button>
+        </form>
+        <div id="auth-toggle-text" class="toggle-text" onclick="toggleAuthMode()">Уже есть аккаунт? Войти</div>
+    </div>
+
+    <!-- Меню личного кабинета -->
+    <div id="welcome-container" class="auth-box" style="display: none;">
+        <h3>Личный кабинет</h3>
+        
+        <div class="user-info-card">
+            <span id="user-greeting" style="font-weight: bold; color: #d4af37;"></span><br>
+            <span style="color: #888; font-size: 12px;">Статус: Премиум-клуб 👑</span>
+        </div>
+
+        <div class="cabinet-menu">
+            <button class="menu-item-btn" onclick="alert('Ваша персональная скидка: 10% на все услуги!')">🎁 Мои Бонусы</button>
+            <button class="menu-item-btn" onclick="alert('История визитов пуста.')">📅 Мои Записи</button>
+            <button class="menu-item-btn" onclick="window.open('https://www.instagram.com/blessedbeautybar__/', '_blank')">✍ Записаться</button>
+            <button class="menu-item-btn" onclick="alert('Ваш баланс: 0 ֏')">💳 Баланс карт</button>
+        </div>
+
+        <button onclick="logout()" class="btn-premium" style="background: #cc3333; color: #fff; margin-top: 25px;">Выйти</button>
+    </div>
+
+    <!-- Меню услуг -->
+    <div class="services-section">
+        <h2>Наше Меню Услуг</h2>
+        
+        <div class="service-item">
+            <h3>Premium Маникюр</h3>
+            <p>Идеальный уход за ногтями, комбинированный маникюр и стойкое покрытие премиум-класса.</p>
+            <span class="price">от 12 500 ֏</span>
+        </div>
+
+        <div class="service-item">
+            <h3>Стилистика и Стрижки</h3>
+            <p>Авторские стрижки, укладки любой сложности и глубокий уход для здоровья ваших волос.</p>
+            <span class="price">от 15 000 ֏</span>
+        </div>
+
+        <div class="service-item">
+            <h3>Вечерний Макияж</h3>
+            <p>Профессиональный мейкап от топ-визажистов, подчеркивающий вашу естественную роскошь.</p>
+            <span class="price">от 20 000 ֏</span>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 BLESSED BEAUTY BAR. ВСЕ ПРАВА ЗАЩИЩЕНЫ.
+    </footer>
+
+    <script>
+        let isLoginMode = false;
+        const authForm = document.getElementById('real-auth-form');
+
+        function toggleAuthMode() {
+            isLoginMode = !isLoginMode;
+            const title = document.getElementById('auth-title');
+            const btn = document.getElementById('auth-action-button');
+            const toggleText = document.getElementById('auth-toggle-text');
+
+            if (isLoginMode) {
+                title.innerText = "Вход в систему";
+                btn.innerText = "Войти";
+                toggleText.innerHTML = "Ещё нет аккаунта? Создать";
+            } else {
+                title.innerText = "Создать аккаунт";
+                btn.innerText = "Зарегистрироваться";
+                toggleText.innerHTML = "Уже есть аккаунт? Войти";
+            }
+        }
+
+        authForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const login = document.getElementById('auth-login').value.trim();
+            const pass = document.getElementById('auth-password').value.trim();
+
+            if (!isLoginMode) {
+                localStorage.setItem(`user_${login}`, pass);
+                alert(`Аккаунт "${login}" успешно создан!`);
+                showDashboard(login);
+            } else {
+                const savedPassword = localStorage.getItem(`user_${login}`);
+                if (savedPassword && savedPassword === pass) {
+                    showDashboard(login);
+                } else {
+                    alert('Ошибка: Неверный логин или пароль!');
+                }
+            }
+        });
+
+        function showDashboard(username) {
+            document.getElementById('auth-container').style.display = 'none';
+            const welcomeBox = document.getElementById('welcome-container');
+            welcomeBox.style.display = 'block';
+            document.getElementById('user-greeting').innerText = `Рады видеть вас, ${username}!`;
+        }
+
+        function logout() {
+            document.getElementById('welcome-container').style.display = 'none';
+            document.getElementById('auth-container').style.display = 'block';
+            document.getElementById('auth-login').value = '';
+            document.getElementById('auth-password').value = '';
+        }
+    </script>
+</body>
+</html>
