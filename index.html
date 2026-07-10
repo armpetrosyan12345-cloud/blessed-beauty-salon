@@ -15,11 +15,11 @@
             color: #ffffff;
             font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             text-align: center;
         }
         .header {
-            padding: 40px 0;
+            padding: 40px 20px;
         }
         
         .logo {
@@ -68,7 +68,7 @@
             box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
         }
 
-        /* Карточки ЛК и авторизации */
+        /* Окно авторизации (остается аккуратным по центру) */
         .auth-box {
             max-width: 420px;
             margin: 40px auto;
@@ -77,7 +77,6 @@
             border: 1px solid #222;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: box-shadow 0.3s ease;
         }
         .auth-box h3 { 
             color: #d4af37; 
@@ -96,7 +95,6 @@
             color: #fff;
             box-sizing: border-box;
             border-radius: 6px;
-            transition: border-color 0.3s;
         }
         .auth-box input:focus {
             border-color: #d4af37;
@@ -104,8 +102,7 @@
         }
 
         .btn-premium {
-            width: 100%;
-            padding: 14px;
+            padding: 14px 40px;
             background: linear-gradient(135deg, #d4af37, #aa7c11);
             border: none;
             border-radius: 6px;
@@ -128,116 +125,137 @@
             margin-top: 20px;
             cursor: pointer;
             text-decoration: underline;
-            transition: color 0.2s;
         }
-        .toggle-text:hover { color: #d4af37; }
 
-        /* --- НОВАЯ ПРЕМИУМ КАРТА ЛОЯЛЬНОСТИ ДЛЯ МАМЫ --- */
+        /* --- НОВЫЙ ПОЛНОЭКРАННЫЙ ЛИЧНЫЙ КАБИНЕТ --- */
+        .full-screen-cabinet {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; /* Разделение на левую и правую часть */
+            gap: 40px;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .full-screen-cabinet {
+                grid-template-columns: 1fr; /* На мобилках в один столбец */
+                margin: 20px;
+            }
+        }
+
+        /* Левая сторона: Элегантная VIP Карта */
         .vip-card {
             background: linear-gradient(135deg, #1e1e1e 0%, #111111 100%);
             border: 1px solid #333;
             border-radius: 16px;
-            padding: 25px;
-            text-align: left;
+            padding: 35px 25px;
             position: relative;
-            overflow: hidden;
-            margin-bottom: 25px;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-        }
-        .vip-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
-            pointer-events: none;
         }
         .vip-card .card-logo {
             font-family: 'Playfair Display', serif;
             color: #d4af37;
-            font-size: 20px;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
+            font-size: 24px;
+            letter-spacing: 4px;
         }
         .vip-card .card-holder {
-            font-size: 18px;
-            letter-spacing: 1px;
+            font-size: 22px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: bold;
-            margin-bottom: 5px;
+            color: #ffffff;
         }
         .vip-card .card-status {
             color: #d4af37;
             font-size: 12px;
-            letter-spacing: 2px;
-        }
-        .vip-card .card-bonus {
-            position: absolute;
-            bottom: 25px;
-            right: 25px;
-            text-align: right;
-        }
-        .vip-card .bonus-digits {
-            font-size: 24px;
-            color: #d4af37;
-            font-weight: bold;
+            letter-spacing: 3px;
+            margin-top: 5px;
         }
 
-        /* Кнопки действий в кабинете */
+        /* Правая сторона: Большое меню действий */
+        .cabinet-right h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
         .cabinet-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 20px;
+            margin-bottom: 30px;
         }
         .cabinet-btn {
             background: #161616;
             border: 1px solid #2a2a2a;
             color: #e0e0e0;
-            padding: 16px 10px;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             letter-spacing: 0.5px;
-            transition: all 0.2s ease;
+            text-align: left;
+            transition: all 0.3s ease;
         }
         .cabinet-btn:hover {
             border-color: #d4af37;
             color: #d4af37;
             background: #1c1c1c;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212,175,55,0.05);
         }
 
-        /* Меню услуг */
+        /* Меню услуг (без цен) */
         .services-section {
-            margin-top: 60px;
+            margin-top: 80px;
             text-align: left;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            padding: 0 20px;
         }
         .services-section h2 {
             font-family: 'Playfair Display', serif;
             color: #d4af37;
             text-align: center;
             letter-spacing: 2px;
+            font-size: 32px;
         }
         .service-item {
             border-bottom: 1px solid #222;
-            padding: 20px 0;
+            padding: 25px 0;
         }
-        .price {
-            color: #d4af37;
-            font-weight: bold;
+        .service-item h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            letter-spacing: 1px;
         }
+        .service-item p {
+            margin: 0;
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
         footer {
-            margin-top: 60px;
+            margin-top: 80px;
+            padding: 30px 0;
             font-size: 12px;
             color: #444;
             letter-spacing: 1px;
+            border-top: 1px solid #111;
         }
     </style>
 </head>
@@ -249,69 +267,68 @@
         <div class="nav-links">
             <a href="#">ГЛАВНАЯ</a>
             <a href="#">УСЛУГИ</a>
-            <a href="https://instagram.com/blessedbeautybar__" target="_blank">INSTAGRAM</a>
+            <a href="https://www.instagram.com/blessedbeautybar__/" target="_blank">INSTAGRAM</a>
             <a href="#">КОНТАКТЫ</a>
         </div>
-        <a href="https://instagram.com/blessedbeautybar__" target="_blank" class="btn-insta">INSTAGRAM</a>
+        <a href="https://www.instagram.com/blessedbeautybar__/" target="_blank" class="btn-insta">INSTAGRAM</a>
     </div>
 
-    <!-- ОКНО АВТOРИЗАЦИИ -->
+    <!-- ОКНО АВТОРИЗАЦИИ (Остается по центру) -->
     <div id="auth-container" class="auth-box">
         <h3 id="auth-title">Создать аккаунт</h3>
         <form id="real-auth-form">
             <input type="text" id="auth-login" placeholder="Логин" required autocomplete="username">
             <input type="password" id="auth-password" placeholder="Пароль" required autocomplete="new-password">
-            <button type="submit" id="auth-action-button" class="btn-premium">Зарегистрироваться</button>
+            <div style="margin-top: 20px;">
+                <button type="submit" id="auth-action-button" class="btn-premium">Зарегистрироваться</button>
+            </div>
         </form>
         <div id="auth-toggle-text" class="toggle-text" onclick="toggleAuthMode()">Уже есть аккаунт? Войти</div>
     </div>
 
-    <!-- ОБНОВЛЕННЫЙ ЛИЧНЫЙ КАБИНЕТ -->
-    <div id="welcome-container" class="auth-box" style="display: none; max-width: 460px;">
-        <h3>Ваш Клубный Кабинет</h3>
+    <!-- ПОЛНОЭКРАННЫЙ КЛУБНЫЙ КАБИНЕТ -->
+    <div id="welcome-container" class="full-screen-cabinet" style="display: none;">
+        <!-- Левая часть: Презентабельная VIP Карта -->
+        <div>
+            <div class="vip-card">
+                <div class="card-logo">BLESSED</div>
+                <div>
+                    <div class="card-holder" id="user-card-name">ЗАГРУЗКА...</div>
+                    <div class="card-status">BLESSED CLUB • PREMIUM MEMBER</div>
+                </div>
+            </div>
+            <button onclick="logout()" class="btn-premium" style="background: #cc3333; color: #fff; box-shadow: none; width: 100%; margin-top: 20px;">Выйти из аккаунта</button>
+        </div>
         
-        <!-- Элегантная VIP Карта -->
-        <div class="vip-card">
-            <div class="card-logo">BLESSED</div>
-            <div class="card-holder" id="user-card-name">ДАННЫЕ ЗАГРУЖАЮТСЯ</div>
-            <div class="card-status">BLESSED CLUB • MEMBER</div>
-            <div class="card-bonus">
-                <span style="font-size: 10px; color: #888; display: block; letter-spacing: 1px;">КЭШБЭК БАЛЛЫ</span>
-                <span class="bonus-digits" id="user-bonus-balance">1 250 ֏</span>
+        <!-- Правая часть: Меню и кнопки -->
+        <div class="cabinet-right">
+            <h2>Личный кабинет BLESSED</h2>
+            <div class="cabinet-grid">
+                <button class="cabinet-btn" onclick="alert('У вас активирована привилегия закрытого клуба: скидка 10% на первый визит!')">🎁 Мои Привилегии</button>
+                <button class="cabinet-btn" onclick="alert('Ближайших визитов не запланировано.')">📅 Предстоящие визиты</button>
+                <button class="cabinet-btn" onclick="window.open('https://www.instagram.com/blessedbeautybar__/', '_blank')">✍ Быстрая Запись в Direct</button>
+                <button class="cabinet-btn" onclick="alert('Ваша клубная карта активна и верифицирована.')">💳 Статус карты</button>
             </div>
         </div>
-
-        <!-- Полноценные кнопки управления -->
-        <div class="cabinet-grid">
-            <button class="cabinet-btn" onclick="alert('У вас активирована приветственная скидка 10% на первый визит!')">🎁 Мои Привилегии</button>
-            <button class="cabinet-btn" onclick="alert('Ближайших записей не найдено. Вы можете записаться онлайн.')">📅 Предстоящие визиты</button>
-            <button class="cabinet-btn" onclick="window.open('https://instagram.com/blessedbeautybar__', '_blank')">✍ Быстрая Запись</button>
-            <button class="cabinet-btn" onclick="alert('Ваша клубная карта активна и привязана к номеру.')">💳 Управление картой</button>
-        </div>
-
-        <button onclick="logout()" class="btn-premium" style="background: #cc3333; color: #fff; box-shadow: none;">Выйти из аккаунта</button>
     </div>
 
-    <!-- Меню услуг -->
+    <!-- Меню услуг (ЦЕНЫ УБРАНЫ) -->
     <div class="services-section">
         <h2>Наше Меню Услуг</h2>
         
         <div class="service-item">
             <h3>Premium Маникюр</h3>
-            <p>Идеальный уход за ногтями, комбинированный маникюр и стойкое покрытие премиум-класса.</p>
-            <span class="price">от 12 500 ֏</span>
+            <p>Идеальный уход за ногтями, комбинированный маникюр и стойкое покрытие премиум-класса от топ-мастеров.</p>
         </div>
 
         <div class="service-item">
             <h3>Стилистика и Стрижки</h3>
-            <p>Авторские стрижки, укладки любой сложности и глубокий уход для здоровья ваших волос.</p>
-            <span class="price">от 15 000 ֏</span>
+            <p>Авторские стрижки, укладки любой сложности и глубокий премиальный уход для здоровья ваших волос.</p>
         </div>
 
         <div class="service-item">
             <h3>Вечерний Макияж</h3>
-            <p>Профессиональный мейкап от топ-визажистов, подчеркивающий вашу естественную роскошь.</p>
-            <span class="price">от 20 000 ֏</span>
+            <p>Профессиональный мейкап от визажистов, подчеркивающий вашу естественную роскошь для особых случаев.</p>
         </div>
     </div>
 
@@ -319,12 +336,11 @@
         © 2026 BLESSED BEAUTY BAR. ВСЕ ПРАВА ЗАЩИЩЕНЫ.
     </footer>
 
-    <!-- Безопасная логика авторизации и сессий -->
+    <!-- Логика сессий и авторизации -->
     <script>
         let isLoginMode = false;
         const authForm = document.getElementById('real-auth-form');
 
-        // Проверяем, авторизован ли пользователь уже (активная сессия)
         window.addEventListener('DOMContentLoaded', () => {
             const activeUser = sessionStorage.getItem('active_session_user');
             if (activeUser) {
@@ -357,18 +373,14 @@
             if (!login || !pass) return;
 
             if (!isLoginMode) {
-                // РЕГИСТРАЦИЯ с проверкой на уникальность
                 if (localStorage.getItem(`u_secure_${login}`)) {
                     alert('Ошибка: Пользователь с таким логином уже существует!');
                     return;
                 }
-                // Сохраняем связку (в будущем здесь будет хэш, сейчас это изоляция данных)
                 localStorage.setItem(`u_secure_${login}`, pass);
-                // Открываем защищенную сессию для конкретного вкладки браузера
                 sessionStorage.setItem('active_session_user', login);
                 showDashboard(login);
             } else {
-                // БЕЗОПАСНЫЙ ВХОД
                 const savedPassword = localStorage.getItem(`u_secure_${login}`);
                 if (savedPassword && savedPassword === pass) {
                     sessionStorage.setItem('active_session_user', login);
@@ -382,17 +394,11 @@
         function showDashboard(username) {
             document.getElementById('auth-container').style.display = 'none';
             const welcomeBox = document.getElementById('welcome-container');
-            welcomeBox.style.display = 'block';
-            
-            // Выводим имя на красивую карту
+            welcomeBox.style.display = 'grid'; // Включаем сетку для полноэкранного вида
             document.getElementById('user-card-name').innerText = username;
-            
-            // Генерируем случайный красивый баланс бонусов для демонстрации
-            document.getElementById('user-bonus-balance').innerText = `1 500 ֏`;
         }
 
         function logout() {
-            // Очищаем активную сессию
             sessionStorage.removeItem('active_session_user');
             document.getElementById('welcome-container').style.display = 'none';
             document.getElementById('auth-container').style.display = 'block';
