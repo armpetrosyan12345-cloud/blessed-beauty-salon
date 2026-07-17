@@ -4,977 +4,914 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLESSED | Premium Beauty Bar</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Подключаем изящный премиальный шрифт -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <style>
-        /* Общие премиальные стили */
-        * {
+        /* Плавная прокрутка для всего сайта */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Базовые стили */
+        body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        body {
-            background-color: #0a0a0a;
-            color: #f5f5f5;
+            text-align: center;
             overflow-x: hidden;
-            line-height: 1.6;
         }
-
-        h1, h2, h3, .brand-logo {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 2px;
+        .header {
+            padding: 40px 20px;
         }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Золотые акценты */
-        .text-gold {
-            color: #d4af37;
-        }
-
-        /* Шапка сайта */
-        header {
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 20px 0;
-            background: rgba(10, 10, 10, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header-wrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: #d4af37;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Герой-секция */
-        .hero {
-            padding: 100px 0;
-            text-align: center;
-            background: radial-gradient(circle, rgba(20,20,20,1) 0%, rgba(10,10,10,1) 100%);
-            position: relative;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 1px;
-            background: #d4af37;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #a0a0a0;
-            max-width: 600px;
-            margin: 0 auto;
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
             font-weight: 300;
+            letter-spacing: 7px;
+            color: #d4af37;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
         }
 
-        /* Секция прайс-листа (аккордеон) */
-        .section-padding {
-            padding: 80px 0;
+        .nav-links {
+            margin-bottom: 25px;
+        }
+        .nav-links a {
+            color: #aaaaaa;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            display: inline-block;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #d4af37;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            position: relative;
-        }
-
-        .accordion-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .accordion-item {
-            background: #121212;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            margin-bottom: 15px;
+        .btn-insta {
+            background: linear-gradient(135deg, #d4af37, #aa7c11);
+            color: #000;
+            padding: 12px 35px;
+            border: none;
             border-radius: 4px;
-            overflow: hidden;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-insta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Окно авторизации */
+        .auth-box {
+            max-width: 420px;
+            margin: 40px auto;
+            padding: 35px;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .auth-box h3 { 
+            color: #d4af37; 
+            margin-top: 0; 
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+        
+        .auth-box input {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #fff;
+            box-sizing: border-box;
+            border-radius: 6px;
+        }
+        .auth-box input:focus {
+            border-color: #d4af37;
+            outline: none;
+        }
+
+        .btn-premium {
+            padding: 14px 40px;
+            background: linear-gradient(135deg, #d4af37, #aa7c11);
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
             transition: all 0.3s ease;
         }
-
-        .accordion-item:hover {
-            border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.05);
+        .btn-premium:hover { 
+            filter: brightness(1.2);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
         }
 
+        .toggle-text {
+            font-size: 13px;
+            color: #888;
+            margin-top: 20px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* --- ПОЛНОЭКРАННЫЙ ЛИЧНЫЙ КАБИНЕТ --- */
+        .full-screen-cabinet {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .full-screen-cabinet {
+                grid-template-columns: 1fr;
+                margin: 20px;
+            }
+        }
+
+        /* Левая сторона: VIP Карта */
+        .vip-card {
+            background: linear-gradient(135deg, #1e1e1e 0%, #111111 100%);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 35px 25px;
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            transition: background 0.5s ease;
+        }
+        /* Золотой стиль для карты VIP */
+        .vip-card.premium-status {
+            background: linear-gradient(135deg, #2a220c 0%, #111111 100%);
+            border-color: #d4af37;
+        }
+        .vip-card .card-logo {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 24px;
+            letter-spacing: 4px;
+        }
+        .vip-card .card-holder {
+            font-size: 22px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .vip-card .card-status {
+            color: #aaaaaa;
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+        .vip-card.premium-status .card-status {
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        /* Правая сторона: Menu действий */
+        .cabinet-right h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+        .cabinet-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .cabinet-btn {
+            background: #161616;
+            border: 1px solid #2a2a2a;
+            color: #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        .cabinet-btn:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+            background: #1c1c1c;
+            transform: translateY(-3px);
+        }
+
+        /* --- СТИЛИ ДЛЯ ПАНЕЛИ АДМИНИСТРАТОРА --- */
+        .admin-panel {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background: #151515;
+            border: 1px solid #d4af37;
+            border-radius: 16px;
+            text-align: left;
+            box-shadow: 0 20px 50px rgba(212,175,55,0.1);
+        }
+        .admin-panel h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            margin-top: 0;
+        }
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .user-table th, .user-table td {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+            text-align: left;
+        }
+        .user-table th {
+            color: #d4af37;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .btn-status {
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .btn-status.make-vip {
+            border-color: #d4af37;
+            color: #d4af37;
+        }
+
+        /* --- СТИЛЬНЫЙ ПРАЙС-ЛИСТ (АККОРДЕОН) --- */
+        .services-section {
+            margin-top: 80px;
+            text-align: left;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+        .services-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            text-align: center;
+            letter-spacing: 2px;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        .accordion-item {
+            background: #111;
+            border: 1px solid #222;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        .accordion-item:hover {
+            border-color: #d4af37;
+        }
         .accordion-header {
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            font-weight: 500;
-            font-size: 18px;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
             letter-spacing: 1px;
-            background: #161616;
+            user-select: none;
+            transition: color 0.3s;
         }
-
-        .accordion-icon {
+        .accordion-header:hover {
             color: #d4af37;
-            transition: transform 0.3s ease;
         }
-
+        .accordion-icon {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+            color: #d4af37;
+        }
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
-            background: #0f0f0f;
+            background: #161616;
+            padding: 0 20px;
         }
-
+        .accordion-content-inner {
+            padding: 20px 0;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #222;
+            font-size: 15px;
+        }
+        .price-row:last-child {
+            border-bottom: none;
+        }
+        .price-name {
+            color: #ccc;
+        }
+        .price-val {
+            color: #d4af37;
+            font-weight: bold;
+        }
         .accordion-item.active .accordion-content {
-            max-height: 500px; /* Достаточно для контента */
+            max-height: 500px; /* Достаточная высота для раскрытия */
         }
-
         .accordion-item.active .accordion-icon {
             transform: rotate(180deg);
         }
 
-        .price-list {
-            padding: 20px;
+        /* --- ГАЛЕРЕЯ НАШИХ РАБОТ --- */
+        .gallery-section {
+            margin-top: 100px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
         }
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-        }
-
-        .price-row:last-child {
-            border-bottom: none;
-        }
-
-        .price-name {
-            font-weight: 300;
-        }
-
-        .price-value {
+        .gallery-section h2 {
+            font-family: 'Playfair Display', serif;
             color: #d4af37;
-            font-weight: 500;
+            font-size: 32px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
         }
-
-        /* Галерея (Наши работы) */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            margin-top: 30px;
         }
-
         .gallery-item {
             position: relative;
+            border-radius: 12px;
             overflow: hidden;
-            border-radius: 4px;
-            height: 350px;
+            aspect-ratio: 1 / 1;
+            border: 1px solid #222;
             cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: #d4af37;
+        }
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: filter 0.3s ease;
         }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
+        /* Оверлей при наведении */
         .gallery-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-
         .gallery-item:hover .gallery-overlay {
             opacity: 1;
         }
-
-        .zoom-text {
+        .gallery-overlay span {
             border: 1px solid #d4af37;
             color: #d4af37;
-            padding: 8px 16px;
-            font-size: 14px;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 13px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            background: rgba(0,0,0,0.6);
         }
 
-        /* Модалка для просмотра изображений */
+        /* Модальное окно для полного просмотра фото */
         .modal {
             display: none;
             position: fixed;
-            z-index: 200;
-            left: 0;
+            z-index: 9999;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            justify-content: center;
+            background: rgba(0, 0, 0, 0.95);
             align-items: center;
+            justify-content: center;
         }
-
         .modal-content {
             max-width: 90%;
-            max-height: 80%;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            max-height: 85%;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
         }
-
         .close-modal {
             position: absolute;
             top: 30px;
             right: 40px;
             color: #fff;
             font-size: 40px;
+            font-weight: bold;
             cursor: pointer;
             transition: color 0.3s;
         }
-
         .close-modal:hover {
             color: #d4af37;
         }
 
-        /* Секция Авторизации / Кабинета */
-        .auth-section {
-            background: #0d0d0d;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-            padding: 100px 0;
+        /* --- СТИЛЬНЫЙ БЛОК КОНТАКТОВ И КАРТЫ --- */
+        .contacts-section {
+            max-width: 1100px;
+            margin: 100px auto 40px auto;
+            padding: 0 20px;
+            text-align: left;
         }
-
-        .auth-box {
-            max-width: 450px;
-            margin: 0 auto;
-            background: #121212;
-            padding: 40px;
-            border-radius: 8px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .auth-box h3 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 24px;
+        .contacts-section h2 {
+            font-family: 'Playfair Display', serif;
             color: #d4af37;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #a0a0a0;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            background: #1a1a1a;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border-radius: 4px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .form-control:focus {
-            border-color: #d4af37;
-        }
-
-        .btn-premium {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #d4af37 0%, #aa841c 100%);
-            border: none;
-            color: #000;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 10px;
-        }
-
-        .btn-premium:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .auth-toggle {
             text-align: center;
-            margin-top: 20px;
-            font-size: 13px;
-            color: #888;
-            cursor: pointer;
-            transition: color 0.3s;
+            font-size: 32px;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
         }
-
-        .auth-toggle:hover {
-            color: #d4af37;
-        }
-
-        /* Личный Кабинет Клиента */
-        .cabinet-grid {
-            display: none; /* Переключается через JS */
-            grid-template-columns: 1fr 1fr;
+        .contacts-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
             gap: 40px;
-            align-items: center;
-            background: #121212;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
             padding: 40px;
-            border-radius: 8px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
-
-        @media(max-width: 768px) {
-            .cabinet-grid {
+        @media (max-width: 768px) {
+            .contacts-container {
                 grid-template-columns: 1fr;
+                padding: 20px;
             }
         }
-
-        /* Клубная карта */
-        .club-card {
-            background: linear-gradient(135deg, #1c1c1c 0%, #0d0d0d 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            height: 220px;
+        .map-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            height: 350px;
+        }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(1) invert(0.9) contrast(1.2); /* Красивый темный эффект для карты */
+        }
+        .info-wrapper {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-            transition: all 0.5s ease;
+            justify-content: center;
         }
-
-        /* Стили для карты со статусом VIP */
-        .club-card.premium-status {
-            background: linear-gradient(135deg, #2c220f 0%, #0f0b04 100%);
-            border-color: #d4af37;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
-        }
-
-        .club-card.premium-status::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .card-logo {
-            font-family: 'Cinzel', serif;
-            font-size: 20px;
+        .info-title {
             color: #d4af37;
-            font-weight: 600;
-        }
-
-        .card-status {
-            font-size: 11px;
-            letter-spacing: 2px;
-            color: #888;
-            text-transform: uppercase;
-        }
-
-        .club-card.premium-status .card-status {
-            color: #d4af37;
-            text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
-        }
-
-        .card-holder {
-            font-size: 18px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-top: auto;
-        }
-
-        /* Информация ЛК */
-        .cabinet-info h3 {
-            font-size: 28px;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-top: 0;
             margin-bottom: 15px;
         }
-
-        .cabinet-info p {
-            color: #a0a0a0;
+        .info-text {
+            color: #ccc;
+            font-size: 15px;
+            line-height: 1.8;
             margin-bottom: 25px;
         }
-
-        .btn-logout {
-            background: transparent;
-            border: 1px solid #ff4d4d;
-            color: #ff4d4d;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .btn-logout:hover {
-            background: #ff4d4d;
+        .info-text strong {
             color: #fff;
         }
-
-        /* Панель администратора */
-        .admin-dashboard {
-            display: none; /* Переключается через JS */
-            background: #121212;
-            padding: 40px;
-            border-radius: 8px;
+        .btn-call {
+            align-self: flex-start;
+            padding: 12px 30px;
+            background: none;
             border: 1px solid #d4af37;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 15px;
-        }
-
-        .admin-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .admin-table th, .admin-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .admin-table th {
             color: #d4af37;
-            text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 1px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
         }
-
-        .btn-status {
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 12px;
-            border: 1px solid #d4af37;
-            background: transparent;
-            color: #d4af37;
-            transition: all 0.2s;
-        }
-
-        .btn-status:hover {
+        .btn-call:hover {
             background: #d4af37;
             color: #000;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
-        .btn-status.make-vip {
-            border-color: #d4af37;
-            background: rgba(212,175,55,0.1);
-        }
-
-        /* Анимации появления (Scroll Reveal) */
+        /* --- ПЛАВНАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКОВ --- */
         .reveal-element {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
         .reveal-element.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Подвал */
         footer {
-            background: #050505;
-            padding: 40px 0;
+            margin-top: 80px;
+            padding: 30px 0;
+            font-size: 12px;
+            color: #444;
+            letter-spacing: 1px;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: #666;
-            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Навигация -->
-    <header>
-        <div class="container header-wrap">
-            <a href="#" class="brand-logo">BLESSED</a>
-            <div style="font-size: 12px; letter-spacing: 1px; color: #a0a0a0;">BEAUTY BAR</div>
+    <!-- Шапка сайта -->
+    <div class="header">
+        <div class="logo">BLESSED</div>
+        <div class="nav-links">
+            <a href="#">ГЛАВНАЯ</a>
+            <a href="#prices">УСЛУГИ</a>
+            <a href="#portfolio">НАШИ РАБОТЫ</a>
+            <a href="https://www.instagram.com/blessedbeautybar__/" target="_blank">INSTAGRAM</a>
+            <a href="#contacts">КОНТАКТЫ</a>
         </div>
-    </header>
-
-    <!-- Главный баннер -->
-    <section class="hero">
-        <div class="container">
-            <h1 class="reveal-element">Blessed Beauty</h1>
-            <p class="reveal-element" style="transition-delay: 0.2s;">Премиальный уход и эстетика. Пространство, созданное подчеркнуть вашу исключительность.</p>
-        </div>
-    </section>
-
-    <!-- Прайс-лист -->
-    <section class="section-padding">
-        <div class="container">
-            <h2 class="section-title reveal-element">Наши Услуги</h2>
-            <div class="accordion-container reveal-element" style="transition-delay: 0.1s;">
-                
-                <!-- Категория 1 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Premium Маникюр</span>
-                        <span class="accordion-icon">▼</span>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="price-list">
-                            <div class="price-row">
-                                <span class="price-name">Классический маникюр + покрытие гель-лак</span>
-                                <span class="price-value">2 800 ₽</span>
-                            </div>
-                            <div class="price-row">
-                                <span class="price-name">Японский эко-маникюр Masura</span>
-                                <span class="price-value">3 500 ₽</span>
-                            </div>
-                            <div class="price-row">
-                                <span class="price-name">Наращивание ногтей (Premium гель)</span>
-                                <span class="price-value">5 000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Категория 2 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Стилистика и Стрижки</span>
-                        <span class="accordion-icon">▼</span>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="price-list">
-                            <div class="price-row">
-                                <span class="price-name">Стрижка женская (укладка в подарок)</span>
-                                <span class="price-value">4 000 ₽</span>
-                            </div>
-                            <div class="price-row">
-                                <span class="price-name">Премиальный уход для волос Tokio Inkarami</span>
-                                <span class="price-value">7 500 ₽</span>
-                            </div>
-                            <div class="price-row">
-                                <span class="price-name">Сложное окрашивание (Airtouch / Balayage)</span>
-                                <span class="price-value">12 000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Категория 3 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Вечерний Макияж</span>
-                        <span class="accordion-icon">▼</span>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="price-list">
-                            <div class="price-row">
-                                <span class="price-name">Дневной нюд-макияж</span>
-                                <span class="price-value">3 500 ₽</span>
-                            </div>
-                            <div class="price-row">
-                                <span class="price-name">Вечерний макияж (Smoky / Hollywood)</span>
-                                <span class="price-value">5 500 ₽</span>
-                            </div>
-                            <div class="price-row">
-                                <span class="price-name">Свадебный образ (макияж + прическа)</span>
-                                <span class="price-value">11 000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Галерея -->
-    <section class="section-padding" style="background: #080808;">
-        <div class="container">
-            <h2 class="section-title reveal-element">Наши Работы</h2>
-            <div class="gallery-grid reveal-element">
-                
-                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1604654894610-df490651e133?q=80&w=800&auto=format&fit=crop')">
-                    <img src="https://images.unsplash.com/photo-1604654894610-df490651e133?q=80&w=800&auto=format&fit=crop" alt="Premium Маникюр">
-                    <div class="gallery-overlay">
-                        <span class="zoom-text">Посмотреть</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800&auto=format&fit=crop')">
-                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800&auto=format&fit=crop" alt="Стрижка">
-                    <div class="gallery-overlay">
-                        <span class="zoom-text">Посмотреть</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop')">
-                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop" alt="Вечерний макияж">
-                    <div class="gallery-overlay">
-                        <span class="zoom-text">Посмотреть</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Модальное окно просмотра изображений -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="imgFull">
+        <a href="https://www.instagram.com/blessedbeautybar__/" target="_blank" class="btn-insta">INSTAGRAM</a>
     </div>
 
-    <!-- Интерактивная зона: Личный кабинет / Админ-панель -->
-    <section class="auth-section">
-        <div class="container">
-            
-            <!-- Форма входа/регистрации -->
-            <div id="auth-container" class="auth-box reveal-element">
-                <h3 id="auth-title">Создать аккаунт</h3>
-                <form id="real-auth-form">
-                    <div class="form-group">
-                        <label for="auth-login">Логин</label>
-                        <input type="text" id="auth-login" class="form-control" required placeholder="Введите логин">
-                    </div>
-                    <div class="form-group">
-                        <label for="auth-password">Пароль</label>
-                        <input type="password" id="auth-password" class="form-control" required placeholder="Минимум 6 символов">
-                    </div>
-                    <button type="submit" id="auth-action-button" class="btn-premium">Зарегистрироваться</button>
-                </form>
-                <div class="auth-toggle" id="auth-toggle-text" onclick="toggleAuthMode()">
-                    Уже есть аккаунт? Войти
-                </div>
+    <!-- ОКНО АВТОРИЗАЦИИ -->
+    <div id="auth-container" class="auth-box">
+        <h3 id="auth-title">Создать аккаунт</h3>
+        <form id="real-auth-form" onsubmit="handleAuth(event)">
+            <input type="text" id="auth-login" placeholder="Логин" required autocomplete="username">
+            <input type="password" id="auth-password" placeholder="Пароль" required autocomplete="new-password">
+            <div style="margin-top: 20px;">
+                <button type="submit" id="auth-action-button" class="btn-premium">Зарегистрироваться</button>
             </div>
+        </form>
+        <div id="auth-toggle-text" class="toggle-text" onclick="toggleAuthMode()">Уже есть аккаунт? Войти</div>
+    </div>
 
-            <!-- Личный кабинет клиента (скрыт по умолчанию) -->
-            <div id="welcome-container" class="cabinet-grid">
-                <!-- Карта клуба -->
-                <div id="user-vip-card" class="club-card">
-                    <div class="card-logo">BLESSED</div>
-                    <div class="card-holder" id="user-card-name">USERNAME</div>
+    <!-- ПОЛНОЭКРАННЫЙ КЛУБНЫЙ КАБИНЕТ КЛИЕНТА -->
+    <div id="welcome-container" class="full-screen-cabinet" style="display: none;">
+        <div>
+            <div id="user-vip-card" class="vip-card">
+                <div class="card-logo">BLESSED</div>
+                <div>
+                    <div class="card-holder" id="user-card-name">ЗАГРУЗКА...</div>
                     <div class="card-status" id="user-card-status">BLESSED CLUB • MEMBER</div>
                 </div>
-                <!-- Информация и действия -->
-                <div class="cabinet-info">
-                    <h3>Добро пожаловать!</h3>
-                    <p>В вашем личном кабинете вы можете отслеживать статус вашей клубной карты. Для получения премиального статуса VIP обратитесь к администратору салона.</p>
-                    <button class="btn-logout" onclick="logout()">Выйти из кабинета</button>
-                </div>
             </div>
-
-            <!-- Панель администратора (скрыта по умолчанию) -->
-            <div id="admin-container" class="admin-dashboard">
-                <div class="admin-header">
-                    <h2>Панель управления VIP</h2>
-                    <button class="btn-logout" onclick="logout()">Выйти из панели</button>
-                </div>
-                <p style="color: #a0a0a0; margin-bottom: 20px;">Список всех зарегистрированных клиентов в системе. Вы можете управлять статусом карты каждого гостя.</p>
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>Имя клиента (Логин)</th>
-                            <th>Текущий статус</th>
-                            <th>Действие</th>
-                        </tr>
-                    </thead>
-                    <tbody id="admin-users-list">
-                        <!-- Сюда динамически рендерятся пользователи -->
-                    </tbody>
-                </table>
-            </div>
-
+            <button onclick="logout()" class="btn-premium" style="background: #cc3333; color: #fff; box-shadow: none; width: 100%; margin-top: 20px;">Выйти из аккаунта</button>
         </div>
-    </section>
+        
+        <div class="cabinet-right">
+            <h2>Личный кабинет BLESSED</h2>
+            <div class="cabinet-grid">
+                <button class="cabinet-btn" onclick="alert('У вас активирована привилегия клуба: скидка 10% на визит!')">🎁 Мои Привилегии</button>
+                <button class="cabinet-btn" onclick="alert('Ближайших визитов не запланировано.')">📅 Предстоящие визиты</button>
+                <button class="cabinet-btn" onclick="window.open('https://www.instagram.com/blessedbeautybar__/', '_blank')">✍ Быстрая Запись в Direct</button>
+                <button class="cabinet-btn" onclick="alert('Ваша клубная карта активна.')">💳 Статус карты</button>
+            </div>
+        </div>
+    </div>
 
-    <!-- Подвал -->
+    <!-- СКРЫТАЯ ПАНЕЛЬ АДМИНИСТРАТОРА -->
+    <div id="admin-container" class="admin-panel" style="display: none;">
+        <h2>Панель управления администратора BLESSED</h2>
+        <p>Здесь вы можете управлять статусами клиентов салона.</p>
+        
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>Логин Клиента</th>
+                    <th>Текущий статус</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody id="admin-users-list">
+                <!-- Сюда скриптом будут добавляться пользователи -->
+            </tbody>
+        </table>
+        
+        <button onclick="logout()" class="btn-premium" style="background: #cc3333; color: #fff; box-shadow: none; margin-top: 30px;">Выйти из панели</button>
+    </div>
+
+    <!-- РАСКРЫВАЮЩИЙСЯ ПРАЙС-ЛИСТ (АККОРДЕОН) -->
+    <div class="services-section reveal-element" id="prices">
+        <h2>Наше Меню Услуг</h2>
+        
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Premium Маникюр
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-content-inner">
+                    <div class="price-row">
+                        <span class="price-name">Комбинированный маникюр (без покрытия)</span>
+                        <span class="price-val">1 200 AMD</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-name">Маникюр с покрытием гель-лак (в один тон)</span>
+                        <span class="price-val">2 200 AMD</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-name">Дизайн и художественная роспись ногтей</span>
+                        <span class="price-val">от 500 AMD</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-name">Премиум-уход (SPA, маски, массаж рук)</span>
+                        <span class="price-val">1 500 AMD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ГАЛЕРЕЯ НАШИХ РАБОТ -->
+    <div class="gallery-section reveal-element" id="portfolio">
+        <h2>Наши Работы</h2>
+        <div class="gallery-grid">
+            <!-- Пример 1 -->
+            <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=600&auto=format&fit=crop')">
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=600&auto=format&fit=crop" alt="Premium Маникюр">
+                <div class="gallery-overlay">
+                    <span>Посмотреть</span>
+                </div>
+            </div>
+            <!-- Пример 2 -->
+            <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=600&auto=format&fit=crop')">
+                <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=600&auto=format&fit=crop" alt="Элегантный дизайн ногтей">
+                <div class="gallery-overlay">
+                    <span>Посмотреть</span>
+                </div>
+            </div>
+            <!-- Пример 3 -->
+            <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1632345031435-8797b2d58045?q=80&w=600&auto=format&fit=crop')">
+                <img src="https://images.unsplash.com/photo-1632345031435-8797b2d58045?q=80&w=600&auto=format&fit=crop" alt="Премиум уход для рук">
+                <div class="gallery-overlay">
+                    <span>Посмотреть</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- СТИЛЬНЫЙ БЛОК КОНТАКТОВ И КАРТЫ -->
+    <div class="contacts-section reveal-element" id="contacts">
+        <h2>Контакты и Локация</h2>
+        <div class="contacts-container">
+            <div class="map-wrapper">
+                <!-- Карта сфокусирована на центр Армавира -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12204.606346387532!2d44.02941549999999!3d40.15004545!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!3f0!3m2!1y1024!2i768!4f13.1!3m3!1m2!1s0x4013f50800000001%3A0x1d3f5bc5156a6db9!2sArmavir%2C%20Armenia!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="info-wrapper">
+                <h3 class="info-title">Салон красоты BLESSED</h3>
+                <p class="info-text">
+                    <strong>Адрес:</strong> г. Армавир, Армения<br><br>
+                    <strong>Часы работы:</strong> Каждый день с 09:00 до 19:00<br><br>
+                    <strong>Телефон для справок:</strong> +37498746545
+                </p>
+                <a href="tel:+37498746545" class="btn-call">Позвонить в салон</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для галереи -->
+    <div id="gallery-modal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img" alt="Просмотр фото">
+    </div>
+
+    <!-- Подвал сайта -->
     <footer>
-        <div class="container">
-            <p>&copy; 2026 BLESSED Beauty Bar. Все права защищены. Эстетика в каждой детали.</p>
-        </div>
+        &copy; 2026 BLESSED Premium Beauty Bar. Все права защищены.
     </footer>
 
-    <!-- JS Логика -->
+    <!-- ЛОГИКА И СЦЕНАРИИ JAVASCRIPT -->
     <script>
-        let isLoginMode = false;
-        const authForm = document.getElementById('real-auth-form');
-
-        // Логика раскрытия прайс-листа (аккордеон)
-        function toggleAccordion(header) {
-            const item = header.parentElement;
-            const isActive = item.classList.contains('active');
-            
-            // Закрываем все открытые блоки
-            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-            
-            // Если кликнутый блок не был активным, открываем его
-            if (!isActive) {
-                item.classList.add('active');
-            }
+        // Инициализация базы данных пользователей в localStorage
+        if (!localStorage.getItem('usersDB')) {
+            const initialUsers = [
+                { username: 'admin', password: '123', role: 'admin' },
+                { username: 'Ани', role: 'user', isVIP: true },
+                { username: 'Ли can', role: 'user', isVIP: false }
+            ];
+            localStorage.setItem('usersDB', JSON.stringify(initialUsers));
         }
 
-        // Логика галереи (увеличение картинок)
-        function openModal(src) {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("imgFull");
-            modal.style.display = "flex";
-            modalImg.src = src;
-        }
+        let isLoginMode = false; // По умолчанию режим регистрации
 
-        function closeModal() {
-            document.getElementById("imageModal").style.display = "none";
-        }
-
-        // Логика плавного появления при прокрутке
-        function reveal() {
-            const reveals = document.querySelectorAll(".reveal-element");
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                const elementVisible = 150;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-
-        window.addEventListener("scroll", reveal);
-        window.addEventListener("DOMContentLoaded", reveal);
-
-        // Получение всех пользователей из localStorage
-        function getAllRegisteredUsers() {
-            const users = [];
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                if (key.startsWith('u_secure_')) {
-                    const username = key.replace('u_secure_', '');
-                    const status = localStorage.getItem(`status_${username}`) || 'MEMBER';
-                    users.push({ username, status });
-                }
-            }
-            return users;
-        }
-
-        // Проверка активной сессии при загрузке
-        window.addEventListener('DOMContentLoaded', () => {
-            const activeUser = sessionStorage.getItem('active_session_user');
-            if (activeUser) {
-                showCorrectDashboard(activeUser);
-            }
-        });
-
-        // Смена режима формы: Вход / Регистрация
         function toggleAuthMode() {
             isLoginMode = !isLoginMode;
             const title = document.getElementById('auth-title');
-            const btn = document.getElementById('auth-action-button');
+            const button = document.getElementById('auth-action-button');
             const toggleText = document.getElementById('auth-toggle-text');
-
+            
             if (isLoginMode) {
-                title.innerText = "Вход в систему";
-                btn.innerText = "Войти в кабинет";
-                toggleText.innerHTML = "Ещё нет аккаунта? Зарегистрироваться";
+                title.innerText = 'Войти в аккаунт';
+                button.innerText = 'Войти';
+                toggleText.innerText = 'Нет аккаунта? Зарегистрироваться';
             } else {
-                title.innerText = "Создать аккаунт";
-                btn.innerText = "Зарегистрироваться";
-                toggleText.innerHTML = "Уже есть аккаунт? Войти";
+                title.innerText = 'Создать аккаунт';
+                button.innerText = 'Зарегистрироваться';
+                toggleText.innerText = 'Уже есть аккаунт? Войти';
             }
         }
 
-        // Обработка формы
-        authForm.addEventListener('submit', function(event) {
+        function handleAuth(event) {
             event.preventDefault();
-            const login = document.getElementById('auth-login').value.trim().toLowerCase();
-            const pass = document.getElementById('auth-password').value.trim();
+            const loginInput = document.getElementById('auth-login').value.trim();
+            const passwordInput = document.getElementById('auth-password').value;
+            
+            if (!loginInput || !passwordInput) return;
 
-            if (!login || !pass) return;
+            let db = JSON.parse(localStorage.getItem('usersDB'));
 
-            // Вход администратора (Хардкод)
-            if (isLoginMode && login === 'admin' && pass === 'blessed2026') {
-                sessionStorage.setItem('active_session_user', 'admin');
-                showCorrectDashboard('admin');
-                return;
-            }
-
-            if (!isLoginMode) {
-                // РЕГИСТРАЦИЯ КЛИЕНТА
-                if (login === 'admin') {
-                    alert('Данный логин зарезервирован системой!');
-                    return;
-                }
-                if (localStorage.getItem(`u_secure_${login}`)) {
-                    alert('Пользователь с таким логином уже существует!');
-                    return;
-                }
-                localStorage.setItem(`u_secure_${login}`, pass);
-                localStorage.setItem(`status_${login}`, 'MEMBER');
-                sessionStorage.setItem('active_session_user', login);
-                showCorrectDashboard(login);
-            } else {
-                // ВХОД КЛИЕНТА
-                const savedPassword = localStorage.getItem(`u_secure_${login}`);
-                if (savedPassword && savedPassword === pass) {
-                    sessionStorage.setItem('active_session_user', login);
-                    showCorrectDashboard(login);
+            if (isLoginMode) {
+                // Логика Входа
+                const user = db.find(u => u.username.toLowerCase() === loginInput.toLowerCase() && u.password === passwordInput);
+                if (user) {
+                    sessionStorage.setItem('currentUser', JSON.stringify(user));
+                    showCorrectInterface(user);
                 } else {
                     alert('Неверный логин или пароль!');
                 }
+            } else {
+                // Логика Регистрации
+                const userExists = db.some(u => u.username.toLowerCase() === loginInput.toLowerCase());
+                if (userExists) {
+                    alert('Пользователь с таким логином уже существует!');
+                    return;
+                }
+                const newUser = {
+                    username: loginInput,
+                    password: passwordInput,
+                    role: 'user',
+                    isVIP: false
+                };
+                db.push(newUser);
+                localStorage.setItem('usersDB', JSON.stringify(db));
+                sessionStorage.setItem('currentUser', JSON.stringify(newUser));
+                showCorrectInterface(newUser);
+                alert('Регистрация успешно завершена!');
             }
-        });
+        }
 
-        // Функция переключения интерфейсов под роль
-        function showCorrectDashboard(username) {
+        function showCorrectInterface(user) {
             document.getElementById('auth-container').style.display = 'none';
-
-            if (username === 'admin') {
-                document.getElementById('welcome-container').style.display = 'none';
+            
+            if (user.role === 'admin') {
                 document.getElementById('admin-container').style.display = 'block';
-                renderAdminUsersList();
+                document.getElementById('welcome-container').style.display = 'none';
+                renderAdminTable();
             } else {
                 document.getElementById('admin-container').style.display = 'none';
                 document.getElementById('welcome-container').style.display = 'grid';
-
-                document.getElementById('user-card-name').innerText = username;
                 
-                const status = localStorage.getItem(`status_${username}`) || 'MEMBER';
+                // Настройка VIP-карты клиента
+                document.getElementById('user-card-name').innerText = user.username;
                 const cardElement = document.getElementById('user-vip-card');
-                const statusTextElement = document.getElementById('user-card-status');
-
-                if (status === 'VIP') {
+                const statusElement = document.getElementById('user-card-status');
+                
+                if (user.isVIP) {
                     cardElement.classList.add('premium-status');
-                    statusTextElement.innerText = 'BLESSED CLUB • VIP MEMBER';
+                    statusElement.innerText = 'BLESSED CLUB • VIP MEMBER';
                 } else {
                     cardElement.classList.remove('premium-status');
-                    statusTextElement.innerText = 'BLESSED CLUB • MEMBER';
+                    statusElement.innerText = 'BLESSED CLUB • MEMBER';
                 }
             }
         }
 
-        // Вывод списка пользователей для администратора
-        function renderAdminUsersList() {
-            const users = getAllRegisteredUsers();
-            const listContainer = document.getElementById('admin-users-list');
-            listContainer.innerHTML = '';
+        function renderAdminTable() {
+            const db = JSON.parse(localStorage.getItem('usersDB'));
+            const tbody = document.getElementById('admin-users-list');
+            tbody.innerHTML = '';
 
-            if (users.length === 0) {
-                listContainer.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #666;">Зарегистрированных клиентов пока нет</td></tr>';
-                return;
-            }
+            db.forEach((user, index) => {
+                if (user.role === 'admin') return; // Пропускаем админа в таблице управления
 
-            users.forEach(user => {
                 const tr = document.createElement('tr');
+                const statusText = user.isVIP ? '✨ VIP Клиент' : 'Обычный участник';
+                const btnText = user.isVIP ? 'Снять VIP' : 'Сделать VIP';
+                const btnClass = user.isVIP ? 'btn-status' : 'btn-status make-vip';
 
-                const tdLogin = document.createElement('td');
-                tdLogin.innerText = user.username;
-                tr.appendChild(tdLogin);
-
-                const tdStatus = document.createElement('td');
-                tdStatus.innerText = user.status;
-                if (user.status === 'VIP') {
-                    tdStatus.style.color = '#d4af37';
-                    tdStatus.style.fontWeight = 'bold';
-                }
-                tr.appendChild(tdStatus);
-
-                const tdAction = document.createElement('td');
-                const btn = document.createElement('button');
-                btn.className = 'btn-status';
-                
-                if (user.status === 'VIP') {
-                    btn.innerText = 'Снять VIP';
-                    btn.onclick = () => changeUserStatus(user.username, 'MEMBER');
-                } else {
-                    btn.className += ' make-vip';
-                    btn.innerText = 'Сделать VIP';
-                    btn.onclick = () => changeUserStatus(user.username, 'VIP');
-                }
-                
-                tdAction.appendChild(btn);
-                tr.appendChild(tdAction);
-
-                listContainer.appendChild(tr);
+                tr.innerHTML = `
+                    <td><strong>${user.username}</strong></td>
+                    <td>${statusText}</td>
+                    <td><button class="${btnClass}" onclick="toggleUserVIP(${index})">${btnText}</button></td>
+                `;
+                tbody.appendChild(tr);
             });
         }
 
-        // Изменение статуса VIP у пользователя
-        function changeUserStatus(username, newStatus) {
-            localStorage.setItem(`status_${username}`, newStatus);
-            renderAdminUsersList();
+        function toggleUserVIP(index) {
+            let db = JSON.parse(localStorage.getItem('usersDB'));
+            db[index].isVIP = !db[index].isVIP;
+            localStorage.setItem('usersDB', JSON.stringify(db));
+            renderAdminTable();
         }
 
-        // Выход
         function logout() {
-            sessionStorage.removeItem('active_session_user');
-            authForm.reset();
+            sessionStorage.removeItem('currentUser');
             document.getElementById('welcome-container').style.display = 'none';
             document.getElementById('admin-container').style.display = 'none';
             document.getElementById('auth-container').style.display = 'block';
+            document.getElementById('real-auth-form').reset();
+        }
+
+        // Автоматический вход при обновлении страницы, если сессия сохранена
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedUser = sessionStorage.getItem('currentUser');
+            if (savedUser) {
+                // Синхронизируем состояние VIP из актуальной локальной базы данных
+                const parsedUser = JSON.parse(savedUser);
+                const db = JSON.parse(localStorage.getItem('usersDB'));
+                const freshUserData = db.find(u => u.username.toLowerCase() === parsedUser.username.toLowerCase());
+                showCorrectInterface(freshUserData || parsedUser);
+            }
+            initRevealAnimation();
+        });
+
+        // ЛОГИКА АККОРДЕОНА (ПРАЙС-ЛИСТ)
+        function toggleAccordion(headerElement) {
+            const item = headerElement.parentElement;
+            item.classList.toggle('active');
+        }
+
+        // МОДАЛЬНОЕ ОКНО ГАЛЕРЕИ
+        function openModal(imgSrc) {
+            const modal = document.getElementById('gallery-modal');
+            const modalImg = document.getElementById('modal-img');
+            modal.style.display = "flex";
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('gallery-modal').style.display = "none";
+        }
+
+        // Закрытие модального окна по клику вне картинки
+        window.onclick = function(event) {
+            const modal = document.getElementById('gallery-modal');
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // ПЛАВНОЕ ПОЯВЛЕНИЕ ЭЛЕМЕНТОВ ПРИ ПРОКРУТКЕ
+        function initRevealAnimation() {
+            const revealElements = document.querySelectorAll('.reveal-element');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            revealElements.forEach(el => observer.observe(el));
         }
     </script>
 </body>
