@@ -304,6 +304,88 @@
             line-height: 1.6;
         }
 
+        /* --- НОВЫЙ СТИЛЬНЫЙ БЛОК КОНТАКТОВ И КАРТЫ --- */
+        .contacts-section {
+            max-width: 1100px;
+            margin: 100px auto 40px auto;
+            padding: 0 20px;
+            text-align: left;
+        }
+        .contacts-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+        .contacts-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        @media (max-width: 768px) {
+            .contacts-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+        }
+        .map-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            height: 350px;
+        }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(1) invert(0.9) contrast(1.2); /* Красивый темный эффект для карты */
+        }
+        .info-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .info-title {
+            color: #d4af37;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .info-text {
+            color: #ccc;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .info-text strong {
+            color: #fff;
+        }
+        .btn-call {
+            align-self: flex-start;
+            padding: 12px 30px;
+            background: none;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            border-radius: 6px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .btn-call:hover {
+            background: #d4af37;
+            color: #000;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
         footer {
             margin-top: 80px;
             padding: 30px 0;
@@ -321,10 +403,10 @@
         <div class="nav-links">
             <a href="#">ГЛАВНАЯ</a>
             <a href="#">УСЛУГИ</a>
-            <a href="https://instagram.com/blessedbeautybar__" target="_blank">INSTAGRAM</a>
-            <a href="#">КОНТАКТЫ</a>
+            <a href="https://instagram.com/" target="_blank">INSTAGRAM</a>
+            <a href="#contacts">КОНТАКТЫ</a>
         </div>
-        <a href="https://instagram.com/blessedbeautybar__" target="_blank" class="btn-insta">INSTAGRAM</a>
+        <a href="https://instagram.com/" target="_blank" class="btn-insta">INSTAGRAM</a>
     </div>
 
     <!-- ОКНО АВТОРИЗАЦИИ -->
@@ -358,7 +440,7 @@
             <div class="cabinet-grid">
                 <button class="cabinet-btn" onclick="alert('У вас активирована привилегия клуба: скидка 10% на визит!')">🎁 Мои Привилегии</button>
                 <button class="cabinet-btn" onclick="alert('Ближайших визитов не запланировано.')">📅 Предстоящие визиты</button>
-                <button class="cabinet-btn" onclick="window.open('https://instagram.com/blessedbeautybar__', '_blank')">✍ Быстрая Запись в Direct</button>
+                <button class="cabinet-btn" onclick="window.open('https://instagram.com/', '_blank')">✍ Быстрая Запись в Direct</button>
                 <button class="cabinet-btn" onclick="alert('Ваша клубная карта активна.')">💳 Статус карты</button>
             </div>
         </div>
@@ -402,6 +484,32 @@
         <div class="service-item">
             <h3>Вечерний Макияж</h3>
             <p>Профессиональный мейкап от визажистов, подчеркивающий вашу естественную роскошь для особых случаев.</p>
+        </div>
+    </div>
+
+    <!-- НОВЫЙ БЛОК КОНТАКТОВ И КАРТЫ -->
+    <div class="contacts-section" id="contacts">
+        <h2>Как Нас Найти</h2>
+        <div class="contacts-container">
+            <!-- Интерактивная карта Google (сейчас настроена на центр города, ты можешь в будущем вставить свои координаты) -->
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15444.60677840134!2d44.0270034!3d40.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40123456789abcde%3A0x1234567890abcdef!2sArmavir%2C%20Armenia!5e0!3m2!1sru!2s!4v1700000000000!5m2!1sru!2s" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            
+            <div class="info-wrapper">
+                <h3 class="info-title">BLESSED Beauty Bar</h3>
+                <div class="info-text">
+                    📍 <strong>Адрес:</strong> г. Армавир, ул. Ленина, д. 10 (пример)<br><br>
+                    📞 <strong>Телефон:</strong> +7 (900) 123-45-67<br><br>
+                    ⏳ <strong>Часы работы:</strong> Каждый день с 10:00 до 21:00
+                </div>
+                <a href="tel:+79001234567" class="btn-call">Позвонить в салон</a>
+            </div>
         </div>
     </div>
 
