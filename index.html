@@ -9,6 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <style>
+        /* Плавная прокрутка для всего сайта */
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Базовые стили */
         body {
             background-color: #0b0b0b;
@@ -193,7 +198,7 @@
             font-weight: bold;
         }
 
-        /* Правая сторона: Меню действий */
+        /* Правая сторона: Menu действий */
         .cabinet-right h2 {
             font-family: 'Playfair Display', serif;
             color: #d4af37;
@@ -440,7 +445,7 @@
             <div class="cabinet-grid">
                 <button class="cabinet-btn" onclick="alert('У вас активирована привилегия клуба: скидка 10% на визит!')">🎁 Мои Привилегии</button>
                 <button class="cabinet-btn" onclick="alert('Ближайших визитов не запланировано.')">📅 Предстоящие визиты</button>
-                <button class="cabinet-btn" onclick="window.open('https://instagram.com', '_blank')">✍ Быстрая Запись в Direct</button>
+                <button class="cabinet-btn" onclick="window.open('https://instagram.com', '_blank')">✍ Быстая Запись в Direct</button>
                 <button class="cabinet-btn" onclick="alert('Ваша клубная карта активна.')">💳 Статус карты</button>
             </div>
         </div>
@@ -494,7 +499,7 @@
             <!-- Интерактивная карта Google Армения, Армавир -->
             <div class="map-wrapper">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12191.139454173874!2d44.02534571933092!3d40.15822368142345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x401392fa941cfbbf%3A0xe2a8b9812f6a7d5b!2z0JDRgNC80LDQstC40YAsINCQ0YDQvNC10L3QuNGP!5e0!3m2!1sru!2sam!4v1710000000000!5m2!1sru!2sam" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3047.935105436662!2d44.03310467655848!3d40.18821916972274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x401392fa941cfbbf%3A0xe2a8b9812f6a7d5b!2z0JDRgNC80LDQstC40YAsINCQ0YDQvNC10L3QuNGP!5e0!3m2!1sru!2sru!4v1710000000000!5m2!1sru!2sru" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
