@@ -199,7 +199,7 @@
             font-weight: bold;
         }
 
-        /* Правая сторона: Menu действий */
+        /* Правая сторона: Меню действий */
         .cabinet-right h2 {
             font-family: 'Playfair Display', serif;
             color: #d4af37;
@@ -559,7 +559,6 @@
             font-size: 12px;
             color: #444;
             letter-spacing: 1px;
-            text-align: center;
         }
     </style>
 </head>
@@ -581,7 +580,7 @@
     <!-- ОКНО АВТОРИЗАЦИИ -->
     <div id="auth-container" class="auth-box">
         <h3 id="auth-title">Создать аккаунт</h3>
-        <form id="real-auth-form" onsubmit="handleAuth(event)">
+        <form id="real-auth-form">
             <input type="text" id="auth-login" placeholder="Логин" required autocomplete="username">
             <input type="password" id="auth-password" placeholder="Пароль" required autocomplete="new-password">
             <div style="margin-top: 20px;">
@@ -666,6 +665,56 @@
                 </div>
             </div>
         </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Стилистика и Стрижки
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-content-inner">
+                    <div class="price-row">
+                        <span class="price-name">Женская модельная стрижка + укладка</span>
+                        <span class="price-val">2 500 AMD</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-name">Вечерняя / Свадебная прическа</span>
+                        <span class="price-val">от 3 500 AMD</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-name">Сложное окрашивание (Airtouch, Балаяж)</span>
+                        <span class="price-val">от 6 000 AMD</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-name">Глубокое восстановление волос (уход)</span>
+                        <span class="price-val">3 000 AMD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Вечерний Макияж
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-content-inner">
+                    <div class="price-row">
+                        <span class="price-name">Дневной / Nude макияж</span>
+                        <span class="price-val">2 000 AMD</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-name">Вечерний роскошный макияж</span>
+                        <span class="price-val">3 500 AMD</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-name">Свадебный премиум макияж</span>
+                        <span class="price-val">5 000 AMD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- ГАЛЕРЕЯ НАШИХ РАБОТ -->
@@ -680,15 +729,15 @@
                 </div>
             </div>
             <!-- Пример 2 -->
-            <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=600&auto=format&fit=crop')">
-                <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=600&auto=format&fit=crop" alt="Элегантный дизайн ногтей">
+            <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop')">
+                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop" alt="Стилистика волос">
                 <div class="gallery-overlay">
                     <span>Посмотреть</span>
                 </div>
             </div>
             <!-- Пример 3 -->
-            <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1632345031435-8797b2d58045?q=80&w=600&auto=format&fit=crop')">
-                <img src="https://images.unsplash.com/photo-1632345031435-8797b2d58045?q=80&w=600&auto=format&fit=crop" alt="Премиум уход для рук">
+            <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=600&auto=format&fit=crop')">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=600&auto=format&fit=crop" alt="Вечерний макияж">
                 <div class="gallery-overlay">
                     <span>Посмотреть</span>
                 </div>
@@ -696,222 +745,240 @@
         </div>
     </div>
 
-    <!-- СТИЛЬНЫЙ БЛОК КОНТАКТОВ И КАРТЫ -->
+    <!-- Модальное окно для полного просмотра фото -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="imgFull">
+    </div>
+
+    <!-- БЛОК КОНТАКТОВ И КАРТЫ -->
     <div class="contacts-section reveal-element" id="contacts">
-        <h2>Контакты и Локация</h2>
+        <h2>Как Нас Найти</h2>
         <div class="contacts-container">
+            <!-- Интерактивная карта Google Армения, Армавир, ул. Шаумяна -->
             <div class="map-wrapper">
-                <!-- Карта сфокусирована на центр Армавира -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12204.606346387532!2d44.02941549999999!3d40.15004545!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!3f0!3m2!1y1024!2i768!4f13.1!3m3!1m2!1s0x4013f50800000001%3A0x1d3f5bc5156a6db9!2sArmavir%2C%20Armenia!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3047.8860505191637!2d44.038487776558555!3d40.18931206965576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4013928df776cb27%3A0xc3c5c84d161726a7!2sShahumyan%20St%2C%20Armavir%200901%2C%20Armenia!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
+            
             <div class="info-wrapper">
-                <h3 class="info-title">Салон красоты BLESSED</h3>
-                <p class="info-text">
-                    <strong>Адрес:</strong> г. Армавир, Армения<br><br>
-                    <strong>Часы работы:</strong> Каждый день с 09:00 до 19:00<br><br>
-                    <strong>Телефон для справок:</strong> +37498746545
-                </p>
+                <h3 class="info-title">BLESSED Beauty Bar</h3>
+                <div class="info-text">
+                    📍 <strong>Адрес:</strong> Армения, г. Армавир, ул. Шаумяна, д. 29/3<br><br>
+                    📞 <strong>Телефон:</strong> +374 (98) 74-65-45<br><br>
+                    ⏳ <strong>Часы работы:</strong> Каждый день с 9:00 до 19:00
+                </div>
                 <a href="tel:+37498746545" class="btn-call">Позвонить в салон</a>
             </div>
         </div>
     </div>
 
-    <!-- Модальное окно для галереи -->
-    <div id="gallery-modal" class="modal">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modal-img" alt="Просмотр фото">
-    </div>
-
-    <!-- Подвал сайта -->
     <footer>
-        &copy; 2026 BLESSED Premium Beauty Bar. Все права защищены.
+        © 2026 BLESSED BEAUTY BAR. ВСЕ ПРАВА ЗАЩИЩЕНЫ.
     </footer>
 
-    <!-- ЛОГИКА И СЦЕНАРИИ JAVASCRIPT -->
+    <!-- Логика администратора и распределения статусов -->
     <script>
-        // Инициализация базы данных пользователей в localStorage
-        if (!localStorage.getItem('usersDB')) {
-            const initialUsers = [
-                { username: 'admin', password: '123', role: 'admin' },
-                { username: 'Ани', role: 'user', isVIP: true },
-                { username: 'Ли can', role: 'user', isVIP: false }
-            ];
-            localStorage.setItem('usersDB', JSON.stringify(initialUsers));
+        let isLoginMode = false;
+        const authForm = document.getElementById('real-auth-form');
+
+        // Логика раскрытия прайс-листа (аккордеон)
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Закрываем все открытые блоки
+            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+            
+            // Если кликнутый блок не был активным, открываем его
+            if (!isActive) {
+                item.classList.add('active');
+            }
         }
 
-        let isLoginMode = false; // По умолчанию режим регистрации
+        // Логика галереи (увеличение картинок)
+        function openModal(src) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("imgFull");
+            modal.style.display = "flex";
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        // Логика плавного появления при прокрутке
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal-element");
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150; // Высота, на которой элемент начинает появляться
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Запуск один раз при загрузке, чтобы показать блоки, которые уже на экране
+        window.addEventListener("DOMContentLoaded", reveal);
+
+        // Список всех пользователей (хранится в памяти для админки)
+        function getAllRegisteredUsers() {
+            const users = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('u_secure_')) {
+                    const username = key.replace('u_secure_', '');
+                    // Получаем статус пользователя (по умолчанию 'MEMBER')
+                    const status = localStorage.getItem(`status_${username}`) || 'MEMBER';
+                    users.push({ username, status });
+                }
+            }
+            return users;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const activeUser = sessionStorage.getItem('active_session_user');
+            if (activeUser) {
+                showCorrectDashboard(activeUser);
+            }
+        });
 
         function toggleAuthMode() {
             isLoginMode = !isLoginMode;
             const title = document.getElementById('auth-title');
-            const button = document.getElementById('auth-action-button');
+            const btn = document.getElementById('auth-action-button');
             const toggleText = document.getElementById('auth-toggle-text');
-            
+
             if (isLoginMode) {
-                title.innerText = 'Войти в аккаунт';
-                button.innerText = 'Войти';
-                toggleText.innerText = 'Нет аккаунта? Зарегистрироваться';
+                title.innerText = "Вход в систему";
+                btn.innerText = "Войти в кабинет";
+                toggleText.innerHTML = "Ещё нет аккаунта? Зарегистрироваться";
             } else {
-                title.innerText = 'Создать аккаунт';
-                button.innerText = 'Зарегистрироваться';
-                toggleText.innerText = 'Уже есть аккаунт? Войти';
+                title.innerText = "Создать аккаунт";
+                btn.innerText = "Зарегистрироваться";
+                toggleText.innerHTML = "Уже есть аккаунт? Войти";
             }
         }
 
-        function handleAuth(event) {
+        authForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            const loginInput = document.getElementById('auth-login').value.trim();
-            const passwordInput = document.getElementById('auth-password').value;
-            
-            if (!loginInput || !passwordInput) return;
+            const login = document.getElementById('auth-login').value.trim().toLowerCase();
+            const pass = document.getElementById('auth-password').value.trim();
 
-            let db = JSON.parse(localStorage.getItem('usersDB'));
+            if (!login || !pass) return;
 
-            if (isLoginMode) {
-                // Логика Входа
-                const user = db.find(u => u.username.toLowerCase() === loginInput.toLowerCase() && u.password === passwordInput);
-                if (user) {
-                    sessionStorage.setItem('currentUser', JSON.stringify(user));
-                    showCorrectInterface(user);
-                } else {
-                    alert('Неверный логин или пароль!');
-                }
-            } else {
-                // Логика Регистрации
-                const userExists = db.some(u => u.username.toLowerCase() === loginInput.toLowerCase());
-                if (userExists) {
-                    alert('Пользователь с таким логином уже существует!');
+            // ХАРДКОД ДЛЯ ВХОДА АДМИНИСТРАТОРА
+            if (isLoginMode && login === 'admin' && pass === 'blessed2026') {
+                sessionStorage.setItem('active_session_user', 'admin');
+                showCorrectDashboard('admin');
+                return;
+            }
+
+            if (!isLoginMode) {
+                // РЕГИСТРАЦИЯ КЛИЕНТА
+                if (login === 'admin') {
+                    alert('Этот логин зарезервирован системой!');
                     return;
                 }
-                const newUser = {
-                    username: loginInput,
-                    password: passwordInput,
-                    role: 'user',
-                    isVIP: false
-                };
-                db.push(newUser);
-                localStorage.setItem('usersDB', JSON.stringify(db));
-                sessionStorage.setItem('currentUser', JSON.stringify(newUser));
-                showCorrectInterface(newUser);
-                alert('Регистрация успешно завершена!');
+                if (localStorage.getItem(`u_secure_${login}`)) {
+                    alert('Ошибка: Пользователь с таким логином уже существует!');
+                    return;
+                }
+                localStorage.setItem(`u_secure_${login}`, pass);
+                localStorage.setItem(`status_${login}`, 'MEMBER'); // По умолчанию статус обычный
+                sessionStorage.setItem('active_session_user', login);
+                showCorrectDashboard(login);
+            } else {
+                // ВХОД КЛИЕНТА
+                const savedPassword = localStorage.getItem(`u_secure_${login}`);
+                if (savedPassword && savedPassword === pass) {
+                    sessionStorage.setItem('active_session_user', login);
+                    showCorrectDashboard(login);
+                } else {
+                    alert('Ошибка безопасности: Неверный логин или пароль!');
+                }
             }
-        }
+        });
 
-        function showCorrectInterface(user) {
+        function showCorrectDashboard(username) {
             document.getElementById('auth-container').style.display = 'none';
             
-            if (user.role === 'admin') {
-                document.getElementById('admin-container').style.display = 'block';
+            if (username === 'admin') {
+                // Показываем панель админа
                 document.getElementById('welcome-container').style.display = 'none';
-                renderAdminTable();
+                document.getElementById('admin-container').style.display = 'block';
+                renderAdminUsersList();
             } else {
+                // Показываем панель клиента
                 document.getElementById('admin-container').style.display = 'none';
                 document.getElementById('welcome-container').style.display = 'grid';
                 
-                // Настройка VIP-карты клиента
-                document.getElementById('user-card-name').innerText = user.username;
-                const cardElement = document.getElementById('user-vip-card');
-                const statusElement = document.getElementById('user-card-status');
+                document.getElementById('user-card-name').innerText = username;
                 
-                if (user.isVIP) {
+                // Проверяем текущий статус из базы данных
+                const currentStatus = localStorage.getItem(`status_${username}`) || 'MEMBER';
+                const cardElement = document.getElementById('user-vip-card');
+                const statusText = document.getElementById('user-card-status');
+
+                if (currentStatus === 'VIP') {
                     cardElement.classList.add('premium-status');
-                    statusElement.innerText = 'BLESSED CLUB • VIP MEMBER';
+                    statusText.innerText = 'BLESSED CLUB • PREMIUM VIP';
                 } else {
                     cardElement.classList.remove('premium-status');
-                    statusElement.innerText = 'BLESSED CLUB • MEMBER';
+                    statusText.innerText = 'BLESSED CLUB • MEMBER';
                 }
             }
         }
 
-        function renderAdminTable() {
-            const db = JSON.parse(localStorage.getItem('usersDB'));
-            const tbody = document.getElementById('admin-users-list');
-            tbody.innerHTML = '';
+        // Отрендерить таблицу пользователей для админа
+        function renderAdminUsersList() {
+            const listContainer = document.getElementById('admin-users-list');
+            listContainer.innerHTML = '';
+            const users = getAllRegisteredUsers();
 
-            db.forEach((user, index) => {
-                if (user.role === 'admin') return; // Пропускаем админа в таблице управления
+            if (users.length === 0) {
+                listContainer.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#666;">Зарегистрированных клиентов пока нет</td></tr>';
+                return;
+            }
 
+            users.forEach(user => {
                 const tr = document.createElement('tr');
-                const statusText = user.isVIP ? '✨ VIP Клиент' : 'Обычный участник';
-                const btnText = user.isVIP ? 'Снять VIP' : 'Сделать VIP';
-                const btnClass = user.isVIP ? 'btn-status' : 'btn-status make-vip';
-
                 tr.innerHTML = `
-                    <td><strong>${user.username}</strong></td>
-                    <td>${statusText}</td>
-                    <td><button class="${btnClass}" onclick="toggleUserVIP(${index})">${btnText}</button></td>
+                    <td style="text-transform: uppercase; font-weight: bold;">${user.username}</td>
+                    <td style="color: ${user.status === 'VIP' ? '#d4af37' : '#aaa'}">${user.status}</td>
+                    <td>
+                        ${user.status === 'MEMBER' 
+                            ? `<button class="btn-status make-vip" onclick="toggleUserStatus('${user.username}', 'VIP')">Сделать VIP</button>` 
+                            : `<button class="btn-status" onclick="toggleUserStatus('${user.username}', 'MEMBER')">Сбросить до Member</button>`
+                        }
+                    </td>
                 `;
-                tbody.appendChild(tr);
+                listContainer.appendChild(tr);
             });
         }
 
-        function toggleUserVIP(index) {
-            let db = JSON.parse(localStorage.getItem('usersDB'));
-            db[index].isVIP = !db[index].isVIP;
-            localStorage.setItem('usersDB', JSON.stringify(db));
-            renderAdminTable();
+        // Переключение статуса админом
+        window.toggleUserStatus = function(username, newStatus) {
+            localStorage.setItem(`status_${username}`, newStatus);
+            renderAdminUsersList();
         }
 
         function logout() {
-            sessionStorage.removeItem('currentUser');
+            sessionStorage.removeItem('active_session_user');
             document.getElementById('welcome-container').style.display = 'none';
             document.getElementById('admin-container').style.display = 'none';
             document.getElementById('auth-container').style.display = 'block';
-            document.getElementById('real-auth-form').reset();
-        }
-
-        // Автоматический вход при обновлении страницы, если сессия сохранена
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedUser = sessionStorage.getItem('currentUser');
-            if (savedUser) {
-                // Синхронизируем состояние VIP из актуальной локальной базы данных
-                const parsedUser = JSON.parse(savedUser);
-                const db = JSON.parse(localStorage.getItem('usersDB'));
-                const freshUserData = db.find(u => u.username.toLowerCase() === parsedUser.username.toLowerCase());
-                showCorrectInterface(freshUserData || parsedUser);
-            }
-            initRevealAnimation();
-        });
-
-        // ЛОГИКА АККОРДЕОНА (ПРАЙС-ЛИСТ)
-        function toggleAccordion(headerElement) {
-            const item = headerElement.parentElement;
-            item.classList.toggle('active');
-        }
-
-        // МОДАЛЬНОЕ ОКНО ГАЛЕРЕИ
-        function openModal(imgSrc) {
-            const modal = document.getElementById('gallery-modal');
-            const modalImg = document.getElementById('modal-img');
-            modal.style.display = "flex";
-            modalImg.src = imgSrc;
-        }
-
-        function closeModal() {
-            document.getElementById('gallery-modal').style.display = "none";
-        }
-
-        // Закрытие модального окна по клику вне картинки
-        window.onclick = function(event) {
-            const modal = document.getElementById('gallery-modal');
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // ПЛАВНОЕ ПОЯВЛЕНИЕ ЭЛЕМЕНТОВ ПРИ ПРОКРУТКЕ
-        function initRevealAnimation() {
-            const revealElements = document.querySelectorAll('.reveal-element');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.15 });
-
-            revealElements.forEach(el => observer.observe(el));
+            document.getElementById('auth-login').value = '';
+            document.getElementById('auth-password').value = '';
         }
     </script>
 </body>
